@@ -7,84 +7,106 @@
 }
 :root {
   font-size: 62.5%;
-  --brand-colors-explorer-dark: #387e96;
-  --brand-colors-details: #fff;
-  --color-title: #202024;
-  --color-text: #121214;
-  font-family: "Mulish", sans-serif;
-  font-size: 1.6rem;
+  --hue: 195;
+
+  --color-brand-light: hsl(var(--hue), 46%, 40%);
+  --brand-colors-explorer-dark: hsl(var(--hue), 91%, 25%);
+  --color-gray-50: hsl(var(--hue), 100%, 98%);
+  --color-gray-800: hsl(240, 6%, 13%);
+  --color-gray-900: hsl(240, 5%, 7%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-white-opacity-20: hsla(0, 0%, 100%, 0.2);
 }
 
 #app {
+  justify-items: center;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content 1fr max-content;
-  height: 100vh;
+  grid-template-rows: max-content 1fr max-content max-content;
+  grid-template-areas:
+    "header"
+    "main"
+    "aside"
+    "footer";
+  min-height: 100vh;
 }
-.container {
-  padding: 0 1rem 0;
-  font-size: 0.7rem;
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: "Mulish", sans-serif;
+  color: var(--color-gray-900);
 }
 
-.background-100 {
-  margin: 0 auto;
-  width: min(112rem, 100%);
-}
+/* Header */
 header {
   background-color: var(--brand-colors-explorer-dark);
+  padding: 1.2rem 2.4rem;
+
+  grid-area: header;
+  width: 100%;
 }
-header .background-100 {
+
+.header-container {
+  margin: 0 auto;
+  width: min(122rem, 100%);
+}
+header .header-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 2.4rem;
 }
-.logo {
+#logo {
   padding: 0.8rem;
   width: 4rem;
   height: 4rem;
 }
+
 header form {
   flex: 1;
 }
+
 .input-wrapper label {
   width: 1px;
   height: 1px;
   overflow: hidden;
   position: absolute;
 }
+
 .input-wrapper input {
   width: 100%;
-  padding: 0.4rem 0.8rem 0.6rem;
+  /* padding: 0.4rem 0.8rem 0.6rem; */
+  padding: 1.2rem 1.4rem;
+
+  background: var(--color-white-opacity-20);
+  border: 0;
   border-radius: 0.4rem;
-  background: rgba(255, 255, 255, 0.2);
+
   color: #fff;
   font-family: Mulish;
-  font-size: 0.7rem;
-  font-weight: 400;
-  border: none;
+  font-weight: 600;
 }
+
 input::placeholder {
   color: #fff;
-  font-family: Mulish;
-  font-weight: 400;
-  font-size: 0.7rem;
-}
-input::focus {
-  outline: none;
 }
 
-.user {
-  box-sizing: content-box;
-  width: 2.8rem; /* Defina a largura da imagem do usuário */
-  height: rem; /* Defina a altura da imagem do usuário */
+.avatar {
+  /* box-sizing: content-box; */
   border-radius: 50%;
-  padding: 0.8rem;
+  width: 4rem; /* Defina a largura da imagem do usuário */
+  height: 4rem; /* Defina a altura da imagem do usuário */
+  /* padding: 0.8rem; */
 }
+
+/* main content */
 main {
   margin-top: 0;
-  background-color: white;
+  background-color: var(--color-gray-50);
 }
-
+.cover {
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: 1rem;
+}
 .circle {
   background-color: #065e7c;
   border-radius: 50%;
@@ -95,11 +117,6 @@ main {
   width: 100%;
 }
 
-.emphasis-img {
-  width: 100%;
-  height: 10rem;
-  margin-bottom: 1rem;
-}
 h2 {
   font-size: 1rem;
   margin-bottom: 0.5rem;
